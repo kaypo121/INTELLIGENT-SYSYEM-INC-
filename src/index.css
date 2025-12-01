@@ -1,0 +1,353 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+    background: linear-gradient(135deg, #0A2463 0%, #00D9FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+  
+  p {
+    @apply text-base leading-relaxed;
+  }
+}
+
+@layer utilities {
+  /* Christmas Snowflakes */
+  .snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+  }
+  
+  .snowflake {
+    position: absolute;
+    top: -10px;
+    color: #fff;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    animation: snowfall linear infinite;
+    opacity: 0.8;
+  }
+  
+  @keyframes snowfall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0.3;
+    }
+  }
+  
+  /* Christmas Lights */
+  .christmas-lights {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    pointer-events: none;
+    z-index: 9998;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: twinkle 1.5s ease-in-out infinite;
+  }
+  
+  .light:nth-child(1) { background: #ff0000; animation-delay: 0s; }
+  .light:nth-child(2) { background: #00ff00; animation-delay: 0.3s; }
+  .light:nth-child(3) { background: #0000ff; animation-delay: 0.6s; }
+  .light:nth-child(4) { background: #ffff00; animation-delay: 0.9s; }
+  .light:nth-child(5) { background: #ff00ff; animation-delay: 1.2s; }
+  .light:nth-child(6) { background: #00ffff; animation-delay: 0.2s; }
+  .light:nth-child(7) { background: #ff8800; animation-delay: 0.5s; }
+  .light:nth-child(8) { background: #ff0088; animation-delay: 0.8s; }
+  
+  @keyframes twinkle {
+    0%, 100% { 
+      opacity: 1;
+      box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+    }
+    50% { 
+      opacity: 0.3;
+      box-shadow: 0 0 5px currentColor;
+    }
+  }
+  
+  /* Christmas Badge */
+  .christmas-badge {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: linear-gradient(135deg, #c41e3a 0%, #165b33 100%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    z-index: 9997;
+    box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4);
+    animation: pulse-christmas 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-christmas {
+    0%, 100% { 
+      transform: scale(1);
+      box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4);
+    }
+    50% { 
+      transform: scale(1.05);
+      box-shadow: 0 6px 25px rgba(196, 30, 58, 0.6);
+    }
+  }
+  
+  /* Animated gradient backgrounds */
+  .gradient-animate {
+    background: linear-gradient(270deg, #0A2463, #00D9FF, #00FF88);
+    background-size: 600% 600%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Floating animation */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  /* Pulse glow effect */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 217, 255, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(0, 217, 255, 0.6); }
+  }
+  
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+  
+  /* Glass morphism */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #0A2463 0%, #00D9FF 50%, #00FF88 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Neon glow */
+  .neon-glow {
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8),
+                 0 0 20px rgba(0, 217, 255, 0.6),
+                 0 0 30px rgba(0, 217, 255, 0.4);
+  }
+  
+  /* 3D card effect */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+  
+  .card-3d:hover {
+    transform: rotateY(5deg) rotateX(5deg) scale(1.05);
+  }
+  
+  /* Particle background */
+  .particle-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .particle-bg::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: 
+      radial-gradient(circle, rgba(0, 217, 255, 0.1) 1px, transparent 1px),
+      radial-gradient(circle, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px, 80px 80px;
+    background-position: 0 0, 40px 40px;
+    animation: particleMove 20s linear infinite;
+  }
+  
+  @keyframes particleMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+  }
+  
+  /* Gradient border */
+  .gradient-border {
+    position: relative;
+    background: white;
+    border-radius: 1rem;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 1rem;
+    padding: 2px;
+    background: linear-gradient(135deg, #0A2463, #00D9FF, #00FF88);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #0A2463, #00D9FF);
+    border-radius: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #00D9FF, #00FF88);
+  }
+  
+  /* Hover lift effect */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(10, 36, 99, 0.2);
+  }
+  
+  /* Animated underline */
+  .animated-underline {
+    position: relative;
+  }
+  
+  .animated-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00D9FF, #00FF88);
+    transition: width 0.3s ease;
+  }
+  
+  .animated-underline:hover::after {
+    width: 100%;
+  }
+  
+  /* Ripple effect */
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+  
+  .ripple-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ripple-effect::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 217, 255, 0.5);
+    transform: translate(-50%, -50%);
+    animation: ripple 1s ease-out infinite;
+  }
+}
