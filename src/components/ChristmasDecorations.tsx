@@ -22,9 +22,9 @@ export function ChristmasDecorations() {
         🎄 Merry Christmas! 🎅
       </div>
 
-      {/* Christmas Lights */}
+      {/* Christmas String Lights */}
       <div className="christmas-lights">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 25 }).map((_, i) => (
           <div key={i} className="light" />
         ))}
       </div>

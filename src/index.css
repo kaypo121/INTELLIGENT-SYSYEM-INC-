@@ -68,44 +68,185 @@
     }
   }
   
-  /* Christmas Lights */
+  /* Christmas String Lights */
   .christmas-lights {
     position: fixed;
-    top: 0;
+    top: 64px; /* Position at bottom of navbar (h-16 = 64px) */
     left: 0;
     width: 100%;
-    height: 60px;
+    height: 50px;
     pointer-events: none;
     z-index: 9998;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: flex-start;
   }
   
   .light {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    animation: twinkle 1.5s ease-in-out infinite;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: swing 3s ease-in-out infinite;
   }
   
-  .light:nth-child(1) { background: #ff0000; animation-delay: 0s; }
-  .light:nth-child(2) { background: #00ff00; animation-delay: 0.3s; }
-  .light:nth-child(3) { background: #0000ff; animation-delay: 0.6s; }
-  .light:nth-child(4) { background: #ffff00; animation-delay: 0.9s; }
-  .light:nth-child(5) { background: #ff00ff; animation-delay: 1.2s; }
-  .light:nth-child(6) { background: #00ffff; animation-delay: 0.2s; }
-  .light:nth-child(7) { background: #ff8800; animation-delay: 0.5s; }
-  .light:nth-child(8) { background: #ff0088; animation-delay: 0.8s; }
+  /* String/wire that bulb hangs from */
+  .light::before {
+    content: '';
+    width: 1px;
+    height: 15px;
+    background: linear-gradient(to bottom, rgba(50, 50, 50, 0.6), rgba(50, 50, 50, 0.3));
+    display: block;
+    margin-bottom: 2px;
+  }
   
-  @keyframes twinkle {
+  /* The actual light bulb */
+  .light::after {
+    content: '';
+    width: 10px;
+    height: 14px;
+    border-radius: 40% 40% 50% 50%;
+    display: block;
+    position: relative;
+    box-shadow: 
+      0 0 8px currentColor,
+      0 0 15px currentColor,
+      inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Bulb cap/base */
+  .light {
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+  }
+  
+  /* Color variations - Warm white, red, green, blue pattern */
+  .light:nth-child(4n+1)::after { 
+    background: linear-gradient(135deg, #fff8dc 0%, #fffacd 100%);
+    color: #fff8dc;
+    animation: twinkle-warm 2.5s ease-in-out infinite;
+  }
+  .light:nth-child(4n+2)::after { 
+    background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+    color: #ff3333;
+    animation: twinkle-red 3s ease-in-out infinite;
+  }
+  .light:nth-child(4n+3)::after { 
+    background: linear-gradient(135deg, #33ff33 0%, #00cc00 100%);
+    color: #33ff33;
+    animation: twinkle-green 2.8s ease-in-out infinite;
+  }
+  .light:nth-child(4n)::after { 
+    background: linear-gradient(135deg, #3366ff 0%, #0033cc 100%);
+    color: #3366ff;
+    animation: twinkle-blue 3.2s ease-in-out infinite;
+  }
+  
+  /* Swing animation - gentle swaying */
+  @keyframes swing {
     0%, 100% { 
-      opacity: 1;
-      box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+      transform: rotate(-2deg);
     }
     50% { 
-      opacity: 0.3;
-      box-shadow: 0 0 5px currentColor;
+      transform: rotate(2deg);
+    }
+  }
+  
+  /* Individual light delays for natural effect */
+  .light:nth-child(1) { animation-delay: 0s; }
+  .light:nth-child(2) { animation-delay: 0.3s; }
+  .light:nth-child(3) { animation-delay: 0.6s; }
+  .light:nth-child(4) { animation-delay: 0.9s; }
+  .light:nth-child(5) { animation-delay: 1.2s; }
+  .light:nth-child(6) { animation-delay: 0.2s; }
+  .light:nth-child(7) { animation-delay: 0.5s; }
+  .light:nth-child(8) { animation-delay: 0.8s; }
+  .light:nth-child(9) { animation-delay: 1.1s; }
+  .light:nth-child(10) { animation-delay: 0.4s; }
+  .light:nth-child(11) { animation-delay: 0.7s; }
+  .light:nth-child(12) { animation-delay: 1s; }
+  .light:nth-child(13) { animation-delay: 0.1s; }
+  .light:nth-child(14) { animation-delay: 0.6s; }
+  .light:nth-child(15) { animation-delay: 0.9s; }
+  .light:nth-child(16) { animation-delay: 1.3s; }
+  .light:nth-child(17) { animation-delay: 0.3s; }
+  .light:nth-child(18) { animation-delay: 0.8s; }
+  .light:nth-child(19) { animation-delay: 1.1s; }
+  .light:nth-child(20) { animation-delay: 0.5s; }
+  
+  /* Twinkling animations for each color */
+  @keyframes twinkle-warm {
+    0%, 100% { 
+      opacity: 1;
+      filter: brightness(1);
+    }
+    50% { 
+      opacity: 0.7;
+      filter: brightness(1.3);
+    }
+  }
+  
+  @keyframes twinkle-red {
+    0%, 100% { 
+      opacity: 1;
+      filter: brightness(1);
+    }
+    45% { 
+      opacity: 0.75;
+      filter: brightness(1.4);
+    }
+  }
+  
+  @keyframes twinkle-green {
+    0%, 100% { 
+      opacity: 1;
+      filter: brightness(1);
+    }
+    48% { 
+      opacity: 0.8;
+      filter: brightness(1.35);
+    }
+  }
+  
+  @keyframes twinkle-blue {
+    0%, 100% { 
+      opacity: 1;
+      filter: brightness(1);
+    }
+    52% { 
+      opacity: 0.7;
+      filter: brightness(1.3);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .christmas-lights {
+      height: 40px;
+    }
+    
+    .light::before {
+      height: 12px;
+    }
+    
+    .light::after {
+      width: 8px;
+      height: 11px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .christmas-lights {
+      height: 35px;
+    }
+    
+    .light::before {
+      height: 10px;
+    }
+    
+    .light::after {
+      width: 7px;
+      height: 10px;
     }
   }
   
