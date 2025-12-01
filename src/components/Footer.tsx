@@ -1,5 +1,5 @@
 import { type Page } from './Navigation';
-import { Linkedin, Twitter, Github, Mail } from 'lucide-react';
+import { Linkedin, Twitter, Mail } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (page: Page) => void;
